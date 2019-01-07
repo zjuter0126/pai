@@ -19,7 +19,7 @@ args.path = os.path.expanduser(args.path)
 cluster_config = common.load_yaml_file(args.path)
 
 for hosts_cfg in cluster_config["machine-list"]:
-    if "machine-type" in hosts_cfg and hosts_cfg["machine-type"] == "NC24R":
+    if "machine-type" in hosts_cfg and hosts_cfg["machine-type"] == "GENERIC":
         # sftp your script to remote host with paramiko.
 
         if "sshport" not in hosts_cfg:
