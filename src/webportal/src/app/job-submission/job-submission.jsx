@@ -33,8 +33,10 @@ import {
   getTheme,
   FontSizes,
   FontWeights,
+  initializeIcons,
 } from 'office-ui-fabric-react';
 
+import {initTheme} from '../components/theme';
 import uploadRoot from '../../assets/img/upload-root.svg';
 import uploadHover from '../../assets/img/upload-hover.svg';
 import singleRoot from '../../assets/img/single-root.svg';
@@ -45,6 +47,9 @@ import {JobSubmissionPage} from './job-submission-page';
 import Card from '../components/card';
 
 const {spacing, palette} = getTheme();
+
+initTheme();
+initializeIcons();
 
 const IconStyle = {
   root: {
