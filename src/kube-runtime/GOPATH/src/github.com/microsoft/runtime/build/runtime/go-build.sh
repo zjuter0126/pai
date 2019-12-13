@@ -27,7 +27,7 @@ set -o nounset
 set -o pipefail
 
 BASH_DIR=$(cd $(dirname ${BASH_SOURCE}) && pwd)
-# Ensure ${PROJECT_DIR} is ${GOPATH}/src/github.com/microsoft/hivedscheduler
+# Ensure ${PROJECT_DIR} is ${GOPATH}/src/github.com/microsoft/runtime
 PROJECT_DIR=${BASH_DIR}/../..
 DIST_DIR=${PROJECT_DIR}/dist/runtime
 
