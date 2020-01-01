@@ -20,7 +20,7 @@ export declare class StorageClient extends OpenPAIBaseClient {
      * Get storage config.
      * @param names Filter storage server with names, default name empty will be ignored.
      */
-    getConfig(names?: string, token?: string): Promise<IStorage[]>;
+    getConfig(names?: string, token?: string): Promise<IStorageConfig[]>;
     /**
      * Get storage config.
      * @param storage The storage name.
