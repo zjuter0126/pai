@@ -11,4 +11,4 @@ import { IStorageConfig, IStorageServer } from './models/storage';
 import { ITokenItem } from './models/token';
 import { IUserInfo } from './models/user';
 import { INodeResource, IVirtualCluster } from './models/virtualCluster';
-export { OpenPAIClient, JobClient, UserClient, VirtualClusterClient, AuthnClient, StorageClient, IPAICluster, IJobConfig, IJobInfo, IJobFrameworkInfo, IJobSshInfo, IUserInfo, ITokenItem, IVirtualCluster, INodeResource, IAuthnInfo, ILoginInfo, IStorageServer as IStorage, IStorageConfig };
+export { OpenPAIClient, JobClient, UserClient, VirtualClusterClient, AuthnClient, StorageClient, IPAICluster, IJobConfig, IJobInfo, IJobFrameworkInfo, IJobSshInfo, IUserInfo, ITokenItem, IVirtualCluster, INodeResource, IAuthnInfo, ILoginInfo, IStorageServer, IStorageConfig };
