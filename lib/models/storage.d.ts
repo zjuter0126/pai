@@ -9,3 +9,16 @@ export interface IStorage {
     };
     extension: any;
 }
+export interface IStorageConfig {
+    name: string;
+    gpn?: string;
+    default: boolean;
+    servers?: string[];
+    mountInfos: IMountInfo[];
+}
+export interface IMountInfo {
+    mountPoint: string;
+    server: string;
+    path: string;
+    permission?: string;
+}
