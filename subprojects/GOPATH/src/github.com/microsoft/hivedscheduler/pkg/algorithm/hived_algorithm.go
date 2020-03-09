@@ -869,6 +869,15 @@ func generatePodScheduleResult(
 	vc api.VirtualClusterName,
 	pod *core.Pod) internal.PodScheduleResult {
 
+	var allSuggestedNodes []string
+	for node := range suggestedNodeSet.Items() {
+		allSuggestedNodes = append(allSuggestedNodes, node.(string))
+	}
+
+	klog.Infof("[SNODED]: All suggested nodes: %v", strings.Join(allSuggestedNodes, ", "))
+	klog.Infof("[SNODED]: groupPhysicalPlacement: %v", common.ToJson(groupPhysicalPlacement))
+	klog.Infof("[SNODED]: groupVirtualPlacement: %v", common.ToJson(groupVirtualPlacement))
+
 	preemptionVictims, nodesHaveVictims := collectPreemptionVictims(groupPhysicalPlacement, priority, groupName)
 	if len(preemptionVictims) > 0 {
 		// we collect victims on a random node, as K8S preempts victims from only one node once.
@@ -881,7 +890,7 @@ func generatePodScheduleResult(
 			victimPods = append(victimPods, v.(*core.Pod))
 			victimNames = append(victimNames, internal.Key(v.(*core.Pod)))
 		}
-		klog.Infof("[%v]: need to preempt pods %v", internal.Key(pod), strings.Join(victimNames, ", "))
+		klog.Infof("[SNODED]: [%v]: need to preempt pods %v", internal.Key(pod), strings.Join(victimNames, ", "))
 		return internal.PodScheduleResult{
 			PodPreemptInfo: &internal.PodPreemptInfo{VictimPods: victimPods},
 		}
@@ -1120,10 +1129,12 @@ func getFewestOpporPhysicalCell(cl CellList, suggestedNodeSet common.Set) *Physi
 		}
 	}
 	if fewestOpporSuggested != nil {
+		klog.Infof("[SNODED]: Returning a cell within suggested nodes: %v", fewestOpporSuggested.nodes[0])
 		return fewestOpporSuggested
 	}
 	if !preemptibleCells.IsEmpty() {
 		for c := range preemptibleCells.Items() {
+			klog.Infof("[SNODED]: Returning a cell NOT within suggested nodes: %v", c.(*PhysicalCell).nodes[0])
 			return c.(*PhysicalCell)
 		}
 	}
