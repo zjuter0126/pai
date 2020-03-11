@@ -1105,7 +1105,10 @@ func getFewestOpporPhysicalCell(cl CellList, suggestedNodeSet common.Set) *Physi
 	var fewestOpporSuggested *PhysicalCell
 	preemptibleCells := common.NewSet()
 	for _, c := range cl {
-		if pc := c.(*PhysicalCell); pc.GetVirtualCell() == nil && pc.GetPreBoundVirtualCell() == nil {
+		pc := c.(*PhysicalCell)
+		klog.Infof("[SNODED]: CellList: %v", pc.nodes[0])
+		if pc.GetVirtualCell() == nil && pc.GetPreBoundVirtualCell() == nil {
+			klog.Infof("[SNODED]: CellList: YES")
 			numOppor := pc.GetUsedGpuNumAtPriorities()[opportunisticPriority]
 			if numOppor < fewestOpporNum {
 				fewestOpporNum = numOppor
@@ -1126,18 +1129,28 @@ func getFewestOpporPhysicalCell(cl CellList, suggestedNodeSet common.Set) *Physi
 			if numOppor > 0 {
 				preemptibleCells.Add(pc)
 			}
+		} else {
+			klog.Infof("[SNODED]: CellList: NO")
 		}
 	}
+
 	if fewestOpporSuggested != nil {
 		klog.Infof("[SNODED]: Returning a cell within suggested nodes: %v", fewestOpporSuggested.nodes[0])
 		return fewestOpporSuggested
 	}
 	if !preemptibleCells.IsEmpty() {
 		for c := range preemptibleCells.Items() {
-			klog.Infof("[SNODED]: Returning a cell NOT within suggested nodes: %v", c.(*PhysicalCell).nodes[0])
+			klog.Infof("[SNODED]: Returning a cell NOT within suggested nodes, but HAS preemptible: %v", c.(*PhysicalCell).nodes[0])
 			return c.(*PhysicalCell)
 		}
 	}
+
+	if (fewestOpporCell != nil) {
+		klog.Infof("[SNODED]: Returning a cell NOT within suggested nodes, but NO preemptible: %v", fewestOpporCell.nodes[0])
+	} else {
+		klog.Infof("[SNODED]: Returning a NULL cell")
+	}
+
 	return fewestOpporCell
 }
 
