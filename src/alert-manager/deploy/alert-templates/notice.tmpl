@@ -1,0 +1,58 @@
+{{ define "email.notice.html" }}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Hello</title>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/EmailMessage" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 16px; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; height: 100%; line-height: 1.6em; width: 100% !important; background-color: #f6f6f6; margin: 0; padding: 0;">
+  <h2 style="text-align:center">Cluster GPU utilization for one week</h2>
+  <table style="font-size: 16px; width: 100%; margin: 0;">
+    {{ range .Alerts }}
+    {{ if .Labels.cluster_usage }}
+    <tr>
+      <th>Cluster GPU utilization</th>
+      <td>{{ .Labels.cluster_usage }}</td>
+    </tr>
+    {{ end }}
+    {{ end }}
+  </table>
+  <br/>
+  <br/>
+  <h2 style="text-align:center">Job GPU utilization for one week</h2>
+  <table style="font-size: 16px; width: 100%; margin: 0; text-align:center;">
+    <tr>
+        <th>Job name</th>
+        <th>GPU utilization</th>
+    </tr>
+    {{ range .Alerts }}
+    {{ if and .Labels.job_name .Labels.job_usage }}
+    <tr>
+        <td>{{ .Labels.job_name }}</td>
+        <td>{{ .Labels.job_usage }}</td>
+    </tr>
+    {{ end }}
+    {{ end }}
+  </table>
+  <br/>
+  <br/>
+  <h2 style="text-align:center">User GPU utilization for one week</h2>
+  <table style="font-size: 16px; width: 100%;margin: 0;text-align:center;">
+    <tr>
+      <th>User name</th>
+      <th>GPU utilization</th>
+    </tr>
+    {{ range .Alerts }}
+    {{ if and .Labels.user_name .Labels.user_usage }}
+    <tr>
+        <td>{{ .Labels.user_name }}</td>
+        <td>{{ .Labels.user_usage }}</td>
+    </tr>
+    {{ end }}
+    {{ end }}
+  </table>
+</body>
+</html>
+{{ end }}
