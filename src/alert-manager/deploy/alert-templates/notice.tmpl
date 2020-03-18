@@ -26,12 +26,16 @@
     <tr>
         <th>Job name</th>
         <th>GPU utilization</th>
+        <th>Job duration</th>
+        <th>Job start time</th>
     </tr>
     {{ range .Alerts }}
     {{ if and .Labels.job_name .Labels.job_usage }}
     <tr>
         <td>{{ .Labels.job_name }}</td>
         <td>{{ .Labels.job_usage }}</td>
+        <td>{{ .Labels.job_duration }}</td>
+        <td>{{ .Labels.job_start_time }}
     </tr>
     {{ end }}
     {{ end }}
@@ -56,3 +60,5 @@
 </body>
 </html>
 {{ end }}
+
+{{ define "email.subject" }}PAI cluster (rr.openpai.org) utilization - {{ .GroupLabels.trigger_time }}{{ end }}

@@ -24,6 +24,7 @@ data:
       - receiver: 'pai-notice'
         match:
           report_type: cluster-usage
+        group_by: [alertname, trigger_time]
     receivers:
     - name: "pai-alert"
       email_configs:
@@ -38,5 +39,5 @@ data:
           send_resolved: false
           html: '{{ "{{" }} template "email.notice.html" . {{ "}}" }}'
           headers:
-            subject: 'pai cluster utilization'
+            subject: '{{ "{{" }} template "email.subject" . {{ "}}" }}'
 {% endif %}
