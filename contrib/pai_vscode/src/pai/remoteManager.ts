@@ -127,7 +127,7 @@ export class RemoteManager extends Singleton {
                 fs.createFileSync(configPath);
             }
 
-            remoteSettings.update('SSH.configFile', configPath);
+            await remoteSettings.update('SSH.configFile', configPath);
         }
         const privateKeyPath: string = path.join(this.currentWorkspace(), RemoteManager.PRIVATE_KEY_FILE_NAME);
 
