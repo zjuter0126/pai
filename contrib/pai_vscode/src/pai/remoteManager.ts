@@ -48,6 +48,7 @@ import {
 export class RemoteManager extends Singleton {
     private static readonly PUBLIC_KEY_FILE_NAME: string = '.pai_remote/public.key';
     private static readonly PRIVATE_KEY_FILE_NAME: string = '.pai_remote/private.key';
+    private static readonly SSH_CONFIG_PATH: string = '.pai_remote/config';
 
     private lastRemoteJobEditorPath: string | undefined;
 
@@ -118,7 +119,7 @@ export class RemoteManager extends Singleton {
         if (remoteSettings.get('SSH.configFile')) {
             configPath = remoteSettings.get<string>('SSH.configFile')!;
         } else {
-            configPath = path.join(this.currentWorkspace(), 'config');
+            configPath = path.join(this.currentWorkspace(), RemoteManager.SSH_CONFIG_PATH);
             if (!fs.existsSync(path.dirname(configPath))) {
                 fs.mkdirSync(path.dirname(configPath));
             }
