@@ -1,0 +1,29 @@
+{{ define "email.user.html" }}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
+<body>
+Dear PAI user:
+
+</br>
+</br>
+
+You receive this email because we notice your job: <b>{{ .GroupLabels.job_name }}</b> running for more than 2 hours.</br>
+And the average GPU utilization in latest one hour is <b>{{ .GroupLabels.job_gpu_util }}</b>.</br>
+We consider your job as a low efficiency job, and will kill it within <b>30</b> mins.</br>
+
+</br>
+If you want a environment to debug your job, please use <b>debug</b> VC.</br>
+The running time limit for each job running on <b>debug</b> VC is <b>2</b> hours, and we don't monitor the GPU utilization
+for <b>debug</b> VC.
+
+</br>
+Job link: <a>https://gcrv100.openp.ai/job-detail.html?username={{ .GroupLabels.user_name }}&jobName={{ .GroupLabels.job_name }}</a>
+
+</br>
+</br>
+Happy coding,</br>
+PAI dev team
+
+</body>
+</html>
+{{ end }}

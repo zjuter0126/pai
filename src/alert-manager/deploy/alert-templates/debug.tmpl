@@ -1,0 +1,24 @@
+{{ define "email.debug.html" }}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
+<body>
+Dear PAI user:
+
+</br>
+</br>
+
+You receive this email because we notice your job: <b>{{ .GroupLabels.job_name }}</b> running exceeds <b>debug</b> VC
+allowed running time (<b>2 hours</b>).</br>
+We will kill this job</br>
+
+</br>
+Job link: <a>https://gcrv100.openp.ai/job-detail.html?username={{ .GroupLabels.user_name }}&jobName={{ .GroupLabels.job_name }}</a>
+
+</br>
+</br>
+Happy coding,</br>
+PAI dev team
+
+</body>
+</html>
+{{ end }}

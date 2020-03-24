@@ -25,6 +25,18 @@ data:
         match:
           report_type: cluster-usage
         group_by: [alertname, trigger_time]
+      - receiver: "pai-user"
+        group_by: ["user_name", "job_name", "job_gpu_util"]
+        match:
+          report_type: user-utilization
+      - receiver: "pai-debug"
+        group_by: ["user_name", "job_name"]
+        match:
+          report_type: debug-overtime
+      - receiver: "pai-debug-start"
+        group_by: ["user_name", "job_name"]
+        match:
+          report_type: "debug-start"
     receivers:
     - name: "pai-alert"
       email_configs:
@@ -40,4 +52,31 @@ data:
           html: '{{ "{{" }} template "email.notice.html" . {{ "}}" }}'
           headers:
             subject: '{{ "{{" }} template "email.subject" . {{ "}}" }}'
+    - name: "pai-user"
+      email_configs:
+        - to: '{{ "{{" }} template "email.debug.start.user" . {{ "}}" }}, binyli@microsoft.com, paidri@microsoft.com'
+          send_resolved: false
+          html: '{{ "{{" }} template "email.user.html" . {{ "}}" }}'
+          headers:
+            subject: User Job Low Efficiency Notice
+            To: '{{ "{{" }} template "email.debug.start.user" . {{ "}}" }}'
+            CC: 'binyli@microsoft.com, paidri@microsoft.com'
+    - name: "pai-debug"
+      email_configs:
+        - to: '{{ "{{" }} template "email.debug.start.user" . {{ "}}" }}, binyli@microsoft.com'
+          send_resolved: false
+          html: '{{ "{{" }} template "email.debug.html" . {{ "}}" }}'
+          headers:
+            subject: User Debug Job Overtime Notice
+            To: '{{ "{{" }} template "email.debug.start.user" . {{ "}}" }}'
+            CC: binyli@microsoft.com
+    - name: "pai-debug-start"
+      email_configs:
+        - to: '{{ "{{" }} template "email.debug.start.user" . {{ "}}" }}, binyli@microsoft.com'
+          send_resolved: false
+          html: '{{ "{{" }} template "email.debug.start.html" . {{ "}}" }}'
+          headers:
+            subject: "PAI User Debug Job Starts"
+            To: '{{ "{{" }} template "email.debug.start.user" . {{ "}}" }}'
+            CC: binyli@microsoft.com
 {% endif %}
