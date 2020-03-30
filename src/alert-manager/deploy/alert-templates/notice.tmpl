@@ -28,6 +28,8 @@
         <th>GPU utilization</th>
         <th>Job duration</th>
         <th>Job start time</th>
+        <th>Job status</th>
+        <th>GPU number</th>
     </tr>
     {{ range .Alerts }}
     {{ if and .Labels.job_name .Labels.job_usage }}
@@ -35,7 +37,9 @@
         <td>{{ .Labels.job_name }}</td>
         <td>{{ .Labels.job_usage }}</td>
         <td>{{ .Labels.job_duration }}</td>
-        <td>{{ .Labels.job_start_time }}
+        <td>{{ .Labels.job_start_time }}</td>
+        <td>{{ .Labels.job_status }}</td>
+        <td>{{ .Labels.job_gpu_number }}</td>
     </tr>
     {{ end }}
     {{ end }}
