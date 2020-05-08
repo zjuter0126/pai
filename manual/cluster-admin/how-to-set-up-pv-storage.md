@@ -105,7 +105,7 @@ sudo apt-get install --assume-yes blobfuse fuse
 kubectl apply -f https://raw.githubusercontent.com/Azure/kubernetes-volume-drivers/master/flexvolume/blobfuse/deployment/blobfuse-flexvol-installer-1.9.yaml
 ```
 
-3. Enable FlexVolume driver in `kubelet` service.
+3. On every worker node, enable FlexVolume driver in `kubelet` service.
 
 Add `--volume-plugin-dir=/etc/kubernetes/volumeplugins` to file `/etc/systemd/system/kubelet.service`:
 
