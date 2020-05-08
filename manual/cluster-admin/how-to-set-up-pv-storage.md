@@ -85,6 +85,44 @@ Please refer to [this document](https://github.com/Azure/kubernetes-volume-drive
 
 Please refer to [this document](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md) to install blobfuse FlexVolume driver and create PV/PVC for Azure Blob.
 
+#### Tips
+
+If you cannot mount blobfuse PVC into containers and the corresponding job in OpenPAI sticks in `WAITING` status, please double check the following requirements:
+
+1. Every worker node should have `blobfuse` installed. Try the following commands to ensure:
+
+```bash
+# change 16.04 to a different release if your system is not Ubuntu 16.04
+wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install --assume-yes blobfuse fuse
+```
+
+2. `blobfuse` driver has been installed:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/Azure/kubernetes-volume-drivers/master/flexvolume/blobfuse/deployment/blobfuse-flexvol-installer-1.9.yaml
+```
+
+3. Enable FlexVolume driver in `kubelet` service.
+
+Add `--volume-plugin-dir=/etc/kubernetes/volumeplugins` to file `/etc/systemd/system/kubelet.service`:
+
+```
+......
+ExecStart=/usr/local/bin/kubelet \
+                --volume-plugin-dir=/etc/kubernetes/volumeplugins \
+......
+```
+
+Restart kubelet:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+```
+
 ### Azure File
 
 First create a Kubernetes secret to access the Azure file share.
