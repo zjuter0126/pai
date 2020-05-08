@@ -25,7 +25,7 @@ In the [installation guide](./installation-guide.md), we assume all worker nodes
 
 In current release, the support for CPU nodes is limited. Please refer to [How to Use CPU Nodes](./how-to-use-cpu-nodes.md) for details.
 
-#### 3. Which NVIDIA driver should I install?
+#### 3. Which version of NVIDIA driver should I install?
 
 First, check out the [NVIDIA site](https://www.nvidia.com/Download/index.aspx) to verify the newest driver version of your GPU card. Then, check out [this table](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#binary-compatibility__table-toolkit-driver) to see the CUDA requirement of driver version.
 
@@ -82,16 +82,16 @@ For Nvidia GPU, use command `nvidia-smi` to check.
 
 #### 7. How to install GPU driver?
 
-For Nvidia GPU, please first determin which version of driver you want to install. Then follow these commands:
+For Nvidia GPU, please first determine which version of driver you want to install (see [this question](#3-which-version-of-nvidia-driver-should-i-install) for details). Then follow these commands:
 
-```
+```bash
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update
 sudo apt install nvidia-418
 sudo reboot
 ```
 
-Here we use nvidia driver version 418 as an example. Please modify `nvidia-418` if you want to install a different version.
+Here we use nvidia driver version 418 as an example. Please modify `nvidia-418` if you want to install a different version, and refer to the Nvidia community for help if encounter any problem.
 
 #### 8. How to install nvidia-container-runtime?
 
