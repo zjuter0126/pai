@@ -4,7 +4,7 @@
 2. [Installation FAQs and Troubleshooting](./installation-faqs-and-troubleshooting.md)
 3. [Basic Management Operations](./basic-management-operations.md)
 4. [How to Manage Users and Groups](./how-to-manage-users-and-groups.md)
-5. [How to Setup Kubernetes Persistent Volumes as Storage](./how-to-set-up-pv-storage.md)
+5. [How to Set Up Storage](./how-to-set-up-storage.md)
 6. [How to Set Up Virtual Clusters](./how-to-set-up-virtual-clusters.md) (this document)
     - [What is Hived Scheduler and How to Configure it](#what-is-hived-scheduler-and-how-to-configure-it)
     - [How to Set Up Virtuall Clusters](#how-to-set-up-virtuall-clusters)

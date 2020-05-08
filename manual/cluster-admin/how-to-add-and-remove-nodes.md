@@ -4,7 +4,7 @@
 2. [Installation FAQs and Troubleshooting](./installation-faqs-and-troubleshooting.md)
 3. [Basic Management Operations](./basic-management-operations.md)
 4. [How to Manage Users and Groups](./how-to-manage-users-and-groups.md)
-5. [How to Setup Kubernetes Persistent Volumes as Storage](./how-to-set-up-pv-storage.md)
+5. [How to Set Up Storage](./how-to-set-up-storage.md)
 6. [How to Set Up Virtual Clusters](./how-to-set-up-virtual-clusters.md)
 7. [How to Add and Remove Nodes](./how-to-add-and-remove-nodes.md) (this document)
     - [How to Add Nodes](#how-to-add-nodes)
@@ -179,7 +179,7 @@ machine-list:
 ./paictl.py service start -n hivedscheduler rest-server
 ```
 
-If you have configured any PV/PVC storage, please confirm the added worker node meets the PV's requirements. See [Confirm Worker Nodes Environment](./how-to-set-up-pv-storage.md#confirm-environment-on-worker-nodes) for details.
+If you have configured any PV/PVC storage, please confirm the added worker node meets the PV's requirements. See [Confirm Worker Nodes Environment](./how-to-set-up-storage.md#confirm-environment-on-worker-nodes) for details.
 
 ## How to Remove Nodes
 

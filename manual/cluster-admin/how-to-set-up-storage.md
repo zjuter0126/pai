@@ -1,10 +1,10 @@
-# How to Setup Kubernetes Persistent Volumes as Storage
+# How to Set Up Storage
 
 1. [Installation Guide](./installation-guide.md)
 2. [Installation FAQs and Troubleshooting](./installation-faqs-and-troubleshooting.md)
 3. [Basic Management Operations](./basic-management-operations.md)
 4. [How to Manage Users and Groups](./how-to-manage-users-and-groups.md)
-5. [How to Setup Kubernetes Persistent Volumes as Storage](./how-to-set-up-pv-storage.md) (this document)
+5. [How to Set Up Storage](./how-to-set-up-storage.md) (this document)
     - [Create PV/PVC on Kubernetes](#create-pvpvc-on-kubernetes)
     - [Confirm Environment on Worker Nodes](#confirm-environment-on-worker-nodes)
     - [Assign Storage to PAI Groups](#assign-storage-to-pai-groups)
