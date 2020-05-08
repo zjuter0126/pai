@@ -152,10 +152,13 @@ Your checklist:
         - SSH service is enabled and share the same username/password and have sudo privilege.
     - OpenPAI Requirement
         - Ubuntu 16.04 (18.04 should work, but not fully tested.)
-        - **GPU driver is installed.** You may use [a command](./installation-faqs-and-troubleshooting.md#6-how-to-check-whether-the-gpu-driver-is-installed) or the [requirement pre-checker](#requirement-pre-checker) to check it. Refer to [the installation guidance](./installation-faqs-and-troubleshooting.md#7-how-to-install-gpu-driver) if the driver is not successfully installed.
-        - **Docker is installed.** You may use command `docker --version` or the [requirement pre-checker](#requirement-pre-checker) to check it. Refer to [docker's installation guidance](https://docs.docker.com/engine/install/ubuntu/) if it is not successfully installed.
+        - **GPU driver is installed.**
+          - You may use [a command](./installation-faqs-and-troubleshooting.md#6-how-to-check-whether-the-gpu-driver-is-installed) or the [requirement pre-checker](#requirement-pre-checker) to check it. Refer to [the installation guidance](./installation-faqs-and-troubleshooting.md#7-how-to-install-gpu-driver) if the driver is not successfully installed.
+        - **Docker is installed.**
+          - You may use command `docker --version` or the [requirement pre-checker](#requirement-pre-checker) to check it. Refer to [docker's installation guidance](https://docs.docker.com/engine/install/ubuntu/) if it is not successfully installed.
         - **[nvidia-container-runtime](https://github.com/NVIDIA/nvidia-container-runtime) or other device runtime is installed. And be configured as the default runtime of docker. Please configure it in [docker-config-file](https://docs.docker.com/config/daemon/#configure-the-docker-daemon), because kubespray will overwrite systemd's env.**
-          - You may use command `sudo docker run nvidia/cuda:10.0-base nvidia-smi` to check it. This command should output information of available GPUs. The [requirement pre-checker](#requirement-pre-checker) can also help you check it. Refer to [the installation guidance](./installation-faqs-and-troubleshooting.md#8-how-to-install-nvidia-container-runtime) if the driver is not successfully installed.
+          - You may use command `sudo docker run nvidia/cuda:10.0-base nvidia-smi` to check it. This command should output information of available GPUs if it is setup properly. The [requirement pre-checker](#requirement-pre-checker) can also help you check it.
+          - Refer to [the installation guidance](./installation-faqs-and-troubleshooting.md#8-how-to-install-nvidia-container-runtime) if the it is not successfully set up.
         - OpenPAI reserves memory and CPU for service running, so make sure there are enough resource to run machine learning jobs. Check hardware requirements for details.
         - Dedicated servers for OpenPAI. OpenPAI manages all CPU, memory and GPU resources of servers. If there is any other workload, it may cause unknown problem due to insufficient resource.
 
