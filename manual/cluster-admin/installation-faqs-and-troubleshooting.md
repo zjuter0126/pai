@@ -126,3 +126,20 @@ sudo chmod 644 /etc/hosts
 **2. Commands with `sudo` become very slow**
 
 The same as `1. Ansible playbook exits because of timeout.` .
+
+**3. Cannot download kubeadm or hyperkube**
+
+During installation, the script will download kubeadm and hyperkube from `storage.googleapis.com`. To be detailed, we use kubespray `2.11` release, the corresponding `kubeadm` and `hyperkube` is:
+
+  - `kubeadm`: `https://storage.googleapis.com/kubernetes-release/release/v1.15.11/bin/linux/amd64/kubeadm`
+  - `hyperkube`: `https://storage.googleapis.com/kubernetes-release/release/v1.15.11/bin/linux/amd64/hyperkube`
+
+Please find alternative urls for downloading this two files and modify `kubeadm_download_url` and `hyperkube_download_url` in your `config` file.
+
+**4. Cannot download image**
+
+Please first check the log to see which image blocks the installation process, and modify `gcr_image_repo`, `kube_image_repo`, `quay_image_repo`, or `docker_image_repo` to a mirror repository correspondingly in `config` file.
+
+For example, if you cannot pull images from `gcr.io`, you should fisrt find a mirror repository (We recommend you to use `gcr.azk8s.cn` if you are in China). Then, modify `gcr_image_repo` and `kube_image_repo`.
+
+Especially for `gcr.io`, we find some image links in kubespray which do not adopt `gcr_image_repo` and `kube_image_repo`. You should modify them manually in `~/pai-deploy/kubespray`. Command `grep -r --color gcr.io ~/pai-deploy/kubespray` will be helpful to you.
