@@ -225,14 +225,14 @@ For example, if you want to assign `nfs-storage` PVC to `default` group. First, 
 
 ```json
 {
-  "groupname": "default",
-  "description": "group for default vc",
-  "externalName": "",
-  "extension": {
-    "acls": {
-      "storageConfigs": [],
-      "admin": false,
-      "virtualClusters": ["default"]
+  "groupname": "default",
+  "description": "group for default vc",
+  "externalName": "",
+  "extension": {
+    "acls": {
+      "storageConfigs": [],
+      "admin": false,
+      "virtualClusters": ["default"]
     }
   }
 }
@@ -244,11 +244,11 @@ The GET request must use header `Authorization: Bearer <token>` for authorizatio
 {
   "data": {
     "groupname": "default",
-    "extension": {
-      "acls": {
-        "storageConfigs": ["nfs-storage"],
-        "admin": false,
-        "virtualClusters": ["default"]
+    "extension": {
+      "acls": {
+        "storageConfigs": ["nfs-storage"],
+        "admin": false,
+        "virtualClusters": ["default"]
       }
     }
   },
