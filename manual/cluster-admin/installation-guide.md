@@ -21,7 +21,7 @@ To install OpenPAI >= `v1.0.0`, please first check [Installation Requirements](#
 
 ## Installation Requirements
 
-The installation requires you to have at least 3 separate machines: one dev box machine, one master machine, and one worker machine.
+The deployment of OpenPAI requires you to have at least 3 separate machines: one dev box machine, one master machine, and one worker machine.
 
 Dev box machine controls masters and workers through SSH during installation, maintainence, and uninstallation. There should be one, and only one dev box. Master machine is used to run core Kubernetes components and core OpenPAI services. In most cases, one master machine is enough. You may set multiple masters if you want the cluster to be highly-available. We recommend you to use CPU-only machines for dev box and master. For worker machines, all of them should have GPUs, and have GPU driver correctly installed.
 
