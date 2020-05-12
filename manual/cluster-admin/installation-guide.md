@@ -1,6 +1,7 @@
 # Installation Guide
 
 1. [Installation Guide](./installation-guide.md) (this document)
+    - [Installation Requirements](#installation-requirements)
     - [Installation From Scratch](#installation-from-scratch)
     - [Clean Previous Deployment](#clean-previous-deployment)
 2. [Installation FAQs and Troubleshooting](./installation-faqs-and-troubleshooting.md)
@@ -69,7 +70,7 @@ Currently, the support for CPU-only worker is limited. The installation of OpenP
 
 ## Installation From Scratch
 
-Besides the requirements above, this installation script also requires that **all worker machines must have the same hardware, e.g. CPU type and number, GPU type and number, memory size.** If you have different types of workers, please first include only one type of workers during installation, then follow [How to Add and Remove Nodes](./how-to-add-and-remove-nodes.md) to add workers with different types. Now, please determine your dev box machine, master machine and worker machine.
+Besides the requirements above, this installation script also requires that **all worker machines must be homogenous GPU servers, which have the same hardware, e.g. CPU type and number, GPU type and number, memory size.** If you have different types of workers, please first include only one type of workers during installation, then follow [How to Add and Remove Nodes](./how-to-add-and-remove-nodes.md) to add workers with different types. Now, please determine your dev box machine, master machine and worker machine.
 
 ### Create Configurations
 
@@ -202,6 +203,14 @@ You can go to http://<your-master-ip>, then use the default username and passwor
 ```
 
 As the message says, you can use `admin` and `admin-password` to login to the webportal, then submit a job to validate your installation.
+
+#### Tips for Checking Requirements
+
+If there is any error, please double check the environment requirements first. Here we provide a requirement checker to help you verify:
+
+```bash
+/bin/bash requirement.sh -m /path/to/master.csv -w /path/to/worker.csv -c /path/to/config
+```
 
 ### Keep a Folder
 
