@@ -21,7 +21,7 @@ In current release, support for CPU nodes is limited. The [installation guide](.
 
 Adding CPU nodes is not much differnt from adding GPU nodes, as we have decribed in [How to Add and Remove Nodes](./how-to-add-and-remove-nodes.md). So you can follow that document basically. Meanwhile, there are two differences for CPU-only nodes:
 
-In the preparation phase, you don't need to check GPU driver and Nvidia docker runtime.
+In the preparation phase, you don't need to check GPU driver and `nvidia-container-runtime`.
 
 In the hived scheduler setting, you should omit `gpu` field or use `gpu: 0` in `skuTypes` for your CPU-only VCs. Don't mix CPU nodes with GPU nodes. Here is an example:
 
