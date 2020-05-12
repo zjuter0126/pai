@@ -17,7 +17,7 @@
 
 There are breaking changes since OpenPAI `v1.0.0`. Before `v1.0.0`, OpenPAI was based on Yarn and Kubernetes, and data was managed by HDFS. Since `v1.0.0`, OpenPAI has switched to a pure Kubernetes-based architecture. Many new features, such as `AAD authorization`, `Hivedscheduler`, `Kube Runtime`, `Marketplace`, etc., are also included. If you still want to install the old Yarn-based OpenPAI, please stay with `v0.14.0`.
 
-To install OpenPAI, please first check [Installation Requirements](./#installation-requirements). Then, if you don't have older version OpenPAI installed, please follow [Installation From Scratch](#installation-from-scratch). Otherwise, please first follow [Clean Previous Deployment](#clean-previous-deployment), then follow [Installation From Scratch](#installation-from-scratch).
+To install OpenPAI >= `v1.0.0`, please first check [Installation Requirements](#installation-requirements). Then, if you don't have older version OpenPAI installed, please follow [Installation From Scratch](#installation-from-scratch). Otherwise, please first follow [Clean Previous Deployment](#clean-previous-deployment), then follow [Installation From Scratch](#installation-from-scratch).
 
 ## Installation Requirements
 
@@ -55,7 +55,7 @@ To be detailed, please check the following requirements before installation:
         - SSH service is enabled and share the same username/password and have sudo privilege.
     - OpenPAI Requirement
         - Ubuntu 16.04 (18.04 should work, but not fully tested.)
-        - **Has GPU and GPU driver is installed.**  You may use [a command](./installation-faqs-and-troubleshooting.md#how-to-check-whether-the-gpu-driver-is-installed) to check it. Refer to [the installation guidance](./installation-faqs-and-troubleshooting.md#how-to-install-gpu-driver) in FAQs if the driver is not successfully installed. If you are wondering which version of GPU driver you should use, please also refer to [FAQs](./installation-faqs-and-troubleshooting.md#installation-faqs).
+        - **Have GPU and GPU driver is installed.**  You may use [a command](./installation-faqs-and-troubleshooting.md#how-to-check-whether-the-gpu-driver-is-installed) to check it. Refer to [the installation guidance](./installation-faqs-and-troubleshooting.md#how-to-install-gpu-driver) in FAQs if the driver is not successfully installed. If you are wondering which version of GPU driver you should use, please also refer to [FAQs](./installation-faqs-and-troubleshooting.md#which-version-of-nvidia-driver-should-i-install).
         - **Docker is installed.**  You may use command `docker --version` to check it. Refer to [docker's installation guidance](https://docs.docker.com/engine/install/ubuntu/) if it is not successfully installed.
         - **[nvidia-container-runtime](https://github.com/NVIDIA/nvidia-container-runtime) or other device runtime is installed. And be configured as the default runtime of docker. Please configure it in [docker-config-file](https://docs.docker.com/config/daemon/#configure-the-docker-daemon), because kubespray will overwrite systemd's env.**
           - You may use command `sudo docker run nvidia/cuda:10.0-base nvidia-smi` to check it. This command should output information of available GPUs if it is setup properly.
@@ -73,7 +73,7 @@ Besides the requirements above, this installation script also requires that **al
 
 ### Create Configurations
 
-After you have decided all of the machines, please create a `master.csv`, a `worker.csv`, and a `config` file on the **dev box machine**. The files represent master machine list, worker machine list, and configuration, respectively. The following is the format and example of these 3 files.
+After you have decided all of the machines, please create a `master.csv`, a `worker.csv`, and a `config` file on the **dev box machine**. The files represent master machine list, worker machine list, and a customized configuration, respectively. The following is the format and example of these 3 files.
 
 ###### `master.csv` format
 ```
