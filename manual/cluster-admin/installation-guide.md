@@ -77,6 +77,9 @@ Besides the requirements above, this installation script also requires that **al
 After you have decided all of the machines, please create a `master.csv`, a `worker.csv`, and a `config` file on the **dev box machine**. The files represent master machine list, worker machine list, and a customized configuration, respectively. The following is the format and example of these 3 files.
 
 ###### `master.csv` format
+
+Please do not insert blank lines or use spaces in this file, and please do not use upper case alphabet letters for hostname.
+
 ```
 hostname(Node Name in k8s),host-ip
 ```
@@ -85,6 +88,9 @@ hostname(Node Name in k8s),host-ip
 openpai-master-01,10.1.0.1
 ```
 ###### `worker.csv` format
+
+Please do not insert blank lines or use spaces in this file, and please do not use upper case alphabet letters for hostname.
+
 ```
 hostname(Node Name in k8s),host-ip
 ```
@@ -180,13 +186,13 @@ git checkout pai-1.0.y  # change to a different branch if you want to deploy a d
 cd pai/contrib/kubespray
 ```
 
-The folder `pai/contrib/kubespray` contains installation scripts, both for kubespray and OpenPAI services. Please run the following script to deploy Kubernetes first:
+The folder `pai/contrib/kubespray` contains installation scripts, both for kubespray and OpenPAI services. Please run the following script to deploy Kubernetes first. You should modify `/path/to` to your own **absolute path** for these files (relative path will cause an error).
 
 ```bash
 /bin/bash quick-start-kubespray.sh -m /path/to/master.csv -w /path/to/worker.csv -c /path/to/config
 ```
 
-After Kubernetes is successfully started, run the following script to start OpenPAI services:
+After Kubernetes is successfully started, run the following script to start OpenPAI services. You should modify `/path/to` to your own **absolute path** for these files (relative path will cause an error).
 
 ```bash
 /bin/bash quick-start-service.sh -m /path/to/master.csv -w /path/to/worker.csv -c /path/to/config
