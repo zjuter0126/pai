@@ -16,7 +16,7 @@
 11. [How to Uninstall OpenPAI](./how-to-uninstall-openpai.md)
 12. [Upgrade Guide](./upgrade-guide.md)
 
-There are breaking changes since OpenPAI `v1.0.0`. Before `v1.0.0`, OpenPAI was based on Yarn and Kubernetes, and data was managed by HDFS. Since `v1.0.0`, OpenPAI has switched to a pure Kubernetes-based architecture. Many new features, such as `AAD authorization`, `Hivedscheduler`, `Kube Runtime`, `Marketplace`, etc., are also included. If you still want to install the old Yarn-based OpenPAI, please stay with `v0.14.0`.
+The architecture of OpenPAI has been updated and optimized in `v1.0.0`. Before `v1.0.0`, OpenPAI was based on Yarn and Kubernetes, and data was managed by HDFS. Since `v1.0.0`, OpenPAI has switched to a pure Kubernetes-based architecture. Many new features, such as `AAD authorization`, `Hivedscheduler`, `Kube Runtime`, `Marketplace`, etc., are also included. If you still want to install the old Yarn-based OpenPAI, please stay with `v0.14.0`.
 
 To install OpenPAI >= `v1.0.0`, please first check [Installation Requirements](#installation-requirements). Then, if you don't have older version OpenPAI installed, please follow [Installation From Scratch](#installation-from-scratch). Otherwise, please first follow [Clean Previous Deployment](#clean-previous-deployment), then follow [Installation From Scratch](#installation-from-scratch).
 
@@ -66,7 +66,7 @@ To be detailed, please check the following requirements before installation:
 
 #### Tips to Use CPU-only Worker
 
-Currently, the support for CPU-only worker is limited. The installation of OpenPAI requires at least one GPU worker to work, which means you cannot set up CPU-only worker from scratch. However, after PAI is successfully installed with GPU workers, you can attach CPU-only worker and set up a CPU-only virtual cluster. Please refer to [How to use CPU Nodes](./how-to-use-cpu-nodes.md) for details.
+Currently, the support for CPU-only worker is limited. If you have both GPU workers and CPU workers, please first set up PAI with only GPU workers. After PAI is successfully installed, you can attach CPU-only workers to it and set up a CPU-only virtual cluster. Please refer to [How to use CPU Nodes](./how-to-use-cpu-nodes.md) for details. If you only have CPU workers, we haven't had an official installation support yet. Please submit an issue for feature request.
 
 ## Installation From Scratch
 
@@ -78,7 +78,7 @@ After you have decided all of the machines, please create a `master.csv`, a `wor
 
 ###### `master.csv` format
 
-Please do not insert blank lines or use spaces in this file, and please do not use upper case alphabet letters for hostname.
+Please **do not** insert blank lines or use spaces in this file, and please **do not** use upper case alphabet letters for hostname.
 
 ```
 hostname(Node Name in k8s),host-ip
@@ -89,7 +89,7 @@ openpai-master-01,10.1.0.1
 ```
 ###### `worker.csv` format
 
-Please do not insert blank lines or use spaces in this file, and please do not use upper case alphabet letters for hostname.
+Please **do not** insert blank lines or use spaces in this file, and please **do not** use upper case alphabet letters for hostname.
 
 ```
 hostname(Node Name in k8s),host-ip
@@ -186,13 +186,13 @@ git checkout pai-1.0.y  # change to a different branch if you want to deploy a d
 cd pai/contrib/kubespray
 ```
 
-The folder `pai/contrib/kubespray` contains installation scripts, both for kubespray and OpenPAI services. Please run the following script to deploy Kubernetes first. You should modify `/path/to` to your own **absolute path** for these files (relative path will cause an error).
+The folder `pai/contrib/kubespray` contains installation scripts, both for kubespray and OpenPAI services. Please run the following script to deploy Kubernetes first. You should modify `/path/to` to your own absolute path for these files. **Do not** use relative path. It will cause an error.
 
 ```bash
 /bin/bash quick-start-kubespray.sh -m /path/to/master.csv -w /path/to/worker.csv -c /path/to/config
 ```
 
-After Kubernetes is successfully started, run the following script to start OpenPAI services. You should modify `/path/to` to your own **absolute path** for these files (relative path will cause an error).
+After Kubernetes is successfully started, run the following script to start OpenPAI services. You should modify `/path/to` to your own absolute path for these files. **Do not** use relative path. It will cause an error.
 
 ```bash
 /bin/bash quick-start-service.sh -m /path/to/master.csv -w /path/to/worker.csv -c /path/to/config
