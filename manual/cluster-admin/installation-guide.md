@@ -66,7 +66,7 @@ To be detailed, please check the following requirements before installation:
 
 #### Tips to Use CPU-only Worker
 
-Currently, the support for CPU-only worker is limited. If you have both GPU workers and CPU workers, please first set up PAI with only GPU workers. After PAI is successfully installed, you can attach CPU-only workers to it and set up a CPU-only virtual cluster. Please refer to [How to use CPU Nodes](./how-to-use-cpu-nodes.md) for details. If you only have CPU workers, we haven't had an official installation support yet. Please submit an issue for feature request.
+Currently, the support for CPU-only worker is limited. If you have both GPU workers and CPU workers, please first set up PAI with GPU workers only. After PAI is successfully installed, you can attach CPU workers to it and set up a CPU-only virtual cluster. Please refer to [How to use CPU Nodes](./how-to-use-cpu-nodes.md) for details. If you only have CPU workers, we haven't had an official installation support yet. Please submit an issue for feature request.
 
 ## Installation From Scratch
 
