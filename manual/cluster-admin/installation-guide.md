@@ -59,14 +59,18 @@ To be detailed, please check the following requirements before installation:
         - **Have GPU and GPU driver is installed.**  You may use [a command](./installation-faqs-and-troubleshooting.md#how-to-check-whether-the-gpu-driver-is-installed) to check it. Refer to [the installation guidance](./installation-faqs-and-troubleshooting.md#how-to-install-gpu-driver) in FAQs if the driver is not successfully installed. If you are wondering which version of GPU driver you should use, please also refer to [FAQs](./installation-faqs-and-troubleshooting.md#which-version-of-nvidia-driver-should-i-install).
         - **Docker is installed.**  You may use command `docker --version` to check it. Refer to [docker's installation guidance](https://docs.docker.com/engine/install/ubuntu/) if it is not successfully installed.
         - **[nvidia-container-runtime](https://github.com/NVIDIA/nvidia-container-runtime) or other device runtime is installed. And be configured as the default runtime of docker. Please configure it in [docker-config-file](https://docs.docker.com/config/daemon/#configure-the-docker-daemon), because kubespray will overwrite systemd's env.**
-          - You may use command `sudo docker run nvidia/cuda:10.0-base nvidia-smi` to check it. This command should output information of available GPUs if it is setup properly.
-          - Refer to [the installation guidance](./installation-faqs-and-troubleshooting.md#how-to-install-nvidia-container-runtime) if the it is not successfully set up.
+            - You may use command `sudo docker run nvidia/cuda:10.0-base nvidia-smi` to check it. This command should output information of available GPUs if it is setup properly.
+            - Refer to [the installation guidance](./installation-faqs-and-troubleshooting.md#how-to-install-nvidia-container-runtime) if the it is not successfully set up.
         - OpenPAI reserves memory and CPU for service running, so make sure there are enough resource to run machine learning jobs. Check hardware requirements for details.
         - Dedicated servers for OpenPAI. OpenPAI manages all CPU, memory and GPU resources of servers. If there is any other workload, it may cause unknown problem due to insufficient resource.
 
 #### Tips to Use CPU-only Worker
 
 Currently, the support for CPU-only worker is limited. If you have both GPU workers and CPU workers, please first set up PAI with GPU workers only. After PAI is successfully installed, you can attach CPU workers to it and set up a CPU-only virtual cluster. Please refer to [How to use CPU Nodes](./how-to-use-cpu-nodes.md) for details. If you only have CPU workers, we haven't had an official installation support yet. Please submit an issue for feature request.
+
+#### Tips for Network-related Issues
+
+If you are facing network issues such as the machine cannot download some file, cannot connect to some docker registry, or the network IO is slow, please combine the prompted error log and kubespray as a keyword, and search for solution. You can also refer to the [installation troubleshooting](./installation-faqs-and-troubleshooting.md#troubleshooting) and [this issue](https://github.com/microsoft/pai/issues/4516).
 
 ## Installation From Scratch
 
@@ -219,6 +223,7 @@ If there is any error, please double check the environment requirements first. H
 ```bash
 /bin/bash requirement.sh -m /path/to/master.csv -w /path/to/worker.csv -c /path/to/config
 ```
+
 
 ### Keep a Folder
 
