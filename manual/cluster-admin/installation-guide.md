@@ -70,7 +70,7 @@ Currently, the support for CPU-only worker is limited. If you have both GPU work
 
 #### Tips for Network-related Issues
 
-If you are facing network issues such as the machine cannot download some file, cannot connect to some docker registry, or the network IO is slow, please combine the prompted error log and kubespray as a keyword, and search for solution. You can also refer to the [installation troubleshooting](./installation-faqs-and-troubleshooting.md#troubleshooting) and [this issue](https://github.com/microsoft/pai/issues/4516).
+If you are facing network issues such as the machine cannot download some file, or cannot connect to some docker registry, please combine the prompted error log and kubespray as a keyword, and search for solution. You can also refer to the [installation troubleshooting](./installation-faqs-and-troubleshooting.md#troubleshooting) and [this issue](https://github.com/microsoft/pai/issues/4516).
 
 ## Installation From Scratch
 
