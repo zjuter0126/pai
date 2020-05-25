@@ -25,6 +25,12 @@ else
   account=$1
 fi
 
+if hash sudo ; then
+  DOCKER='sudo docker'
+else
+  DOCKER='docker'
+fi
+
 echo \
 'gcr.io/google_containers/pause-amd64:3.1
 gcr.io/google-containers/k8s-dns-node-cache:1.15.5
@@ -39,7 +45,7 @@ gcr.io/google_containers/kubernetes-dashboard-amd64:v1.10.1' \
   image_name=${name//\//-}
   tag=`echo $image | cut -d ":" -f2`
   new_image="${account}/${image_name}:${tag}"
-  docker pull $image
-  docker tag $image $new_image
-  docker push ${new_image}
+  $DOCKER pull $image
+  $DOCKER tag $image $new_image
+  $DOCKER push ${new_image}
 done
