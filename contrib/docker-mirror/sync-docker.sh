@@ -42,7 +42,7 @@ k8s.gcr.io/addon-resizer:1.8.3
 gcr.io/google_containers/kubernetes-dashboard-amd64:v1.10.1' \
 | while read image; do
   image_name=`echo $image | cut -d "/" -f2- | cut -d ":" -f1`
-  image_name=${name//\//-}
+  image_name=${image_name//\//-}
   tag=`echo $image | cut -d ":" -f2`
   new_image="${account}/${image_name}:${tag}"
   $DOCKER pull $image
