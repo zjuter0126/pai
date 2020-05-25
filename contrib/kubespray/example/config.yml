@@ -53,12 +53,31 @@ docker_image_tag: <% latest-release %>
 #                       kubespray setting                             #
 #######################################################################
 
-# If you couldn't access to gcr.io or docker.io, please configure it.
+# openpai_kube_network_plugin: calico
+
+#######################################################################
+#                       network setting                               #
+#######################################################################
+
 # gcr_image_repo: "gcr.io"
 # kube_image_repo: "gcr.io/google-containers"
 # quay_image_repo: "quay.io"
 # docker_image_repo: "docker.io"
+
 # kubeadm_download_url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubeadm_version }}/bin/linux/{{ image_arch }}/kubeadm"
 # hyperkube_download_url: "https://storage.googleapis.com/kubernetes-release/release/{{ kube_version }}/bin/linux/{{ image_arch }}/hyperkube"
 
-# openpai_kube_network_plugin: calico
+# nvidia_device_plugin_yaml_url: "https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/1.0.0-beta4/nvidia-device-plugin.yml"
+# amd_device_plugin_yaml_url: "https://raw.githubusercontent.com/RadeonOpenCompute/k8s-device-plugin/master/k8s-ds-amdgpu-dp.yaml"
+# rdma_config_yaml_url: "https://raw.githubusercontent.com/Mellanox/k8s-rdma-sriov-dev-plugin/master/example/hca/rdma-hca-node-config.yaml"
+# rdma_device_plugin_yaml_url: "https://raw.githubusercontent.com/Mellanox/k8s-rdma-sriov-dev-plugin/master/example/device-plugin.yaml"
+
+# Extra docker images from gcr.io, see https://github.com/microsoft/pai/issues/4516 for details.
+# pod_infra_image_repo: "gcr.io/google_containers/pause-{{ image_arch }}"
+# dnsautoscaler_image_repo: "k8s.gcr.io/cluster-proportional-autoscaler-{{ image_arch }}"
+# tiller_image_repo: "gcr.io/kubernetes-helm/tiller"
+# registry_proxy_image_repo: "gcr.io/google_containers/kube-registry-proxy"
+# metrics_server_image_repo: "gcr.io/google_containers/metrics-server-amd64"
+# addon_resizer_image_repo: "k8s.gcr.io/addon-resizer"
+# dashboard_image_repo: "gcr.io/google_containers/kubernetes-dashboard-{{ image_arch }}"
+

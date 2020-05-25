@@ -393,3 +393,31 @@ hyperkube_download_url: "{{ env['cfg']['hyperkube_download_url'] }}"
 # Choose network plugin (cilium, calico, contiv, weave or flannel. Use cni for generic cni plugin)
 # Can also be set to 'cloud', which lets the cloud provider setup appropriate routing
 kube_network_plugin: {{ env["cfg"]['openpai_kube_network_plugin'] | default('calico') }}
+
+{%- if 'pod_infra_image_repo' in env['cfg'] %}
+pod_infra_image_repo: "{{ env['cfg']['pod_infra_image_repo'] }}"
+{%- endif %}
+
+{%- if 'dnsautoscaler_image_repo' in env['cfg'] %}
+dnsautoscaler_image_repo: "{{ env['cfg']['dnsautoscaler_image_repo'] }}"
+{%- endif %}
+
+{%- if 'tiller_image_repo' in env['cfg'] %}
+tiller_image_repo: "{{ env['cfg']['tiller_image_repo'] }}"
+{%- endif %}
+
+{%- if 'registry_proxy_image_repo' in env['cfg'] %}
+registry_proxy_image_repo: "{{ env['cfg']['registry_proxy_image_repo'] }}"
+{%- endif %}
+
+{%- if 'metrics_server_image_repo' in env['cfg'] %}
+metrics_server_image_repo: "{{ env['cfg']['metrics_server_image_repo'] }}"
+{%- endif %}
+
+{%- if 'addon_resizer_image_repo' in env['cfg'] %}
+addon_resizer_image_repo: "{{ env['cfg']['addon_resizer_image_repo'] }}"
+{%- endif %}
+
+{%- if 'dashboard_image_repo' in env['cfg'] %}
+dashboard_image_repo: "{{ env['cfg']['dashboard_image_repo'] }}"
+{%- endif %}

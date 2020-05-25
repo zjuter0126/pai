@@ -228,3 +228,9 @@ authentication:
 #  workgroup: WORKGROUP
 #  smbuser: smbuser
 #  smbpwd: smbpwd
+
+device-plugin:
+  nvidia_device_plugin_yaml_url: "{{ env['cfg']['nvidia_device_plugin_yaml_url'] | default('https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/1.0.0-beta4/nvidia-device-plugin.yml') }}"
+  amd_device_plugin_yaml_url: "{{ env['cfg']['amd_device_plugin_yaml_url'] | default('https://raw.githubusercontent.com/RadeonOpenCompute/k8s-device-plugin/master/k8s-ds-amdgpu-dp.yaml') }}"
+  rdma_config_yaml_url: "{{ env['cfg']['rdma_config_yaml_url'] | default('https://raw.githubusercontent.com/Mellanox/k8s-rdma-sriov-dev-plugin/master/example/hca/rdma-hca-node-config.yaml') }}"
+  rdma_device_plugin_yaml_url:"{{ env['cfg']['rdma_device_plugin_yaml_url'] | default('https://raw.githubusercontent.com/Mellanox/k8s-rdma-sriov-dev-plugin/master/example/device-plugin.yaml') }}"
