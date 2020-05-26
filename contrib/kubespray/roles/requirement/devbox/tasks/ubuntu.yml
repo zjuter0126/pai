@@ -61,6 +61,7 @@
   changed_when: false
   check_mode: false
   environment: {}
+  ignore_errors: true
 
 - name: "Dev-box 4.2 Check whether the vm can access to docker.io"
   fail:
