@@ -60,6 +60,8 @@ function getStorageServerUri(server) {
       );
     case 'hdfs':
       return `hdfs://${data.namenode}:${data.port}`;
+    case 'unknown':
+      return '';
     default:
       throw new Error('Invalid storage server type');
   }
