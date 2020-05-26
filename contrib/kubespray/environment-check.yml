@@ -14,6 +14,9 @@
     - name: "SSH test from dev-box to all machine of infra and worker"
       ping:
 
+    - set_fact:
+      myerrors: []
+
 - hosts: localhost
   become: true
   become_user: root

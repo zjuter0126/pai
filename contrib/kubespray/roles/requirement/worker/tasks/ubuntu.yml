@@ -30,9 +30,6 @@
   check_mode: false
   environment: {}
 
-- set_fact:
-    myerrors: []
-
 - name: "Worker 3.2 Check whether the vm can access to gcr.io"
   set_fact:
     myerrors: "{{ myerrors + ['Unable to access gcr.fake'] }}"
