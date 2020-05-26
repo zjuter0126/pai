@@ -67,6 +67,7 @@
     msg: "Unable to access docker.io"
   changed_when: false
   check_mode: false
+  ignore_errors: true
   environment: {}
   when:
     - devbox_nslookup_docker_io.rc != 0
