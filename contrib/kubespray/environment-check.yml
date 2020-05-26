@@ -40,6 +40,7 @@
     - { role: requirement/worker }
 
 - hosts: all
-  name: "Display errors"
-  debug:
-    var: myerrors
+  tasks:
+    - name: "Display errors"
+      debug:
+        var: myerrors
