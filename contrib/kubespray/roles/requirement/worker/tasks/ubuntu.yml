@@ -50,10 +50,6 @@
   when:
     - worker_nslookup_quay_io.rc != 0
 
-- name: "Display errors"
-  debug:
-    var: myerrors
-
 - name: check worker machines' NVIDIA gpu card, drivers and runtime
   include_tasks: ubuntu-nvidia.yml
   when: gpu_type == 'nvidia'

@@ -38,3 +38,8 @@
   gather_facts: true
   roles:
     - { role: requirement/worker }
+
+- hosts: all
+  name: "Display errors"
+  debug:
+    var: myerrors
