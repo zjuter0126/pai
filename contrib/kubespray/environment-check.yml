@@ -42,5 +42,6 @@
 - hosts: all
   tasks:
     - name: "Display errors"
-      debug:
-        var: myerrors
+      fail:
+        msg: "{{ myerrors }}"
+      when: myerrors|length > 0
