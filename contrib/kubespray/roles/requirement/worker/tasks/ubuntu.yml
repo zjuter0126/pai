@@ -30,18 +30,17 @@
   check_mode: false
   environment: {}
 
+- set_fact:
+    myerrors: []
+
 - name: "Worker 3.2 Check whether the vm can access to gcr.io"
-  fail:
-    msg: "Unable to access gcr.fake"
-  changed_when: false
-  check_mode: false
-  ignore_errors: true
-  environment: {}
+  set_fact:
+    myerrors: {{ myerrors + ['Unable to access gcr.fake'] }}
   when:
     - worker_ping_gcr_io.rc != 0
 
 - name: "Worker 4.1 Check whether the vm can access to quay.io"
-  raw: nslookup quay.io
+  raw: nslookup quay.fake
   register: worker_nslookup_quay_io
   failed_when: false
   changed_when: false
@@ -49,13 +48,13 @@
   environment: {}
 
 - name: "Worker 4.2 Check whether the vm can access to quay.io"
-  fail:
-    msg: "Unable to access quay.io"
-  changed_when: false
-  check_mode: false
-  environment: {}
+  set_fact:
+    myerrors: {{ myerrors + ['Unable to access quay.fake'] }}
   when:
     - worker_nslookup_quay_io.rc != 0
+
+- debug:
+    var: myerrors
 
 - name: check worker machines' NVIDIA gpu card, drivers and runtime
   include_tasks: ubuntu-nvidia.yml
