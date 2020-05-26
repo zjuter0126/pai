@@ -48,7 +48,7 @@
     - ansible_control_host_address == ansible_default_ipv4.address
 
 - name: "Infra 4.1 Check whether the vm can access to gcr.io"
-  raw: ping gcr.io -c 3
+  raw: ping gcr.fake -c 3
   register: infra_ping_gcr_io
   failed_when: false
   changed_when: false
@@ -57,9 +57,10 @@
 
 - name: "Infra 4.2 Check whether the vm can access to gcr.io"
   fail:
-    msg: "Unable to access gcr.io"
+    msg: "Unable to access gcr.fake"
   changed_when: false
   check_mode: false
+  ignore_errors: true
   environment: {}
   when:
     - infra_ping_gcr_io.rc != 0

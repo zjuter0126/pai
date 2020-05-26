@@ -13,28 +13,25 @@
 
     - name: "SSH test from dev-box to all machine of infra and worker"
       ping:
-- block:
-  - hosts: localhost
-    become: true
-    become_user: root
-    roles:
-      - { role: requirement/devbox }
-    vars:
-      ansible_connection: local
 
-  - hosts: infra
-    become: true
-    become_user: root
-    gather_facts: true
-    roles:
-      - { role: requirement/infra }
+- hosts: localhost
+  become: true
+  become_user: root
+  roles:
+    - { role: requirement/devbox }
+  vars:
+    ansible_connection: local
 
-  - hosts: worker
-    become: true
-    become_user: root
-    gather_facts: true
-    roles:
-      - { role: requirement/worker }
-  rescue:
-    - debug:
-      msg: 'I caught an error, can do stuff here to fix it, :-)'
+- hosts: infra
+  become: true
+  become_user: root
+  gather_facts: true
+  roles:
+    - { role: requirement/infra }
+
+- hosts: worker
+  become: true
+  become_user: root
+  gather_facts: true
+  roles:
+    - { role: requirement/worker }
