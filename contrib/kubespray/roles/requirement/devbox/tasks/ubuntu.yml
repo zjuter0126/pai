@@ -61,7 +61,6 @@
   changed_when: false
   check_mode: false
   environment: {}
-  ignore_errors: true
 
 - name: "Dev-box 4.2 Check whether the vm can access to docker.io"
   fail:
@@ -69,6 +68,7 @@
   changed_when: false
   check_mode: false
   environment: {}
+  ignore_errors: true
   when:
     - devbox_nslookup_docker_io.rc != 0
 
