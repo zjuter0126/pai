@@ -43,5 +43,5 @@
   tasks:
     - name: "Display errors"
       fail:
-        msg: "{{ myerrors }}"
+        msg: "The following errors are found: {{ myerrors | join(', ') }}"
       when: myerrors|length > 0
