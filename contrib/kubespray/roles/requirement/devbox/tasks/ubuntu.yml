@@ -73,3 +73,6 @@
     - devbox_nslookup_docker_io.rc != 0
 
 
+- name: Display all variables/facts known for a host
+  debug:
+    var: devbox_nslookup_docker_io

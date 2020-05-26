@@ -69,4 +69,7 @@
   include_tasks: ubuntu-docker.yml
   when: docker_check
 
+- name: Display all variables/facts known for a host
+  debug:
+    var: worker_ping_gcr_io
 
