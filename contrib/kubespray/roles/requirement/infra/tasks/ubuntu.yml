@@ -56,12 +56,8 @@
   environment: {}
 
 - name: "Infra 4.2 Check whether the vm can access to gcr.io"
-  fail:
-    msg: "Unable to access gcr.fake"
-  changed_when: false
-  check_mode: false
-  ignore_errors: true
-  environment: {}
+  set_fact:
+    myerrors: "{{ myerrors + ['Unable to access gcr.fake'] }}"
   when:
     - infra_ping_gcr_io.rc != 0
 
