@@ -53,7 +53,8 @@
   when:
     - worker_nslookup_quay_io.rc != 0
 
-- debug:
+- name: "Display errors"
+  debug:
     var: myerrors
 
 - name: check worker machines' NVIDIA gpu card, drivers and runtime
@@ -67,8 +68,4 @@
 - name: check docker requirement
   include_tasks: ubuntu-docker.yml
   when: docker_check
-
-- name: Display all variables/facts known for a host
-  debug:
-    var: worker_ping_gcr_io
 
