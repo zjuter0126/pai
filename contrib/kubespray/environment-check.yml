@@ -15,7 +15,7 @@
       ping:
 
     - set_fact:
-      myerrors: []
+        myerrors: []
 
 - hosts: localhost
   become: true
