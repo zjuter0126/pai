@@ -68,16 +68,8 @@
   changed_when: false
   check_mode: false
   environment: {}
-  ignore_errors: true
   set_fact: failed="true"
   when:
     - devbox_nslookup_docker_io.rc != 0
-
-- name: "test"
-  fail:
-    msg: "Unable to access docker.io"
-  when:
-    - failed="true"
-
 
 
