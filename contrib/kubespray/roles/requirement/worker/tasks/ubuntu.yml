@@ -35,7 +35,7 @@
 
 - name: "Worker 3.2 Check whether the vm can access to gcr.io"
   set_fact:
-    myerrors: {{ myerrors + ['Unable to access gcr.fake'] }}
+    myerrors: "{{ myerrors + ['Unable to access gcr.fake'] }}"
   when:
     - worker_ping_gcr_io.rc != 0
 
@@ -49,7 +49,7 @@
 
 - name: "Worker 4.2 Check whether the vm can access to quay.io"
   set_fact:
-    myerrors: {{ myerrors + ['Unable to access quay.fake'] }}
+    myerrors: "{{ myerrors + ['Unable to access quay.fake'] }}"
   when:
     - worker_nslookup_quay_io.rc != 0
 
