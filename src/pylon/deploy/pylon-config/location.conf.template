@@ -55,6 +55,16 @@ location ~ ^/rest-server/api(.*)$ {
   add_header          Etag             $response_etag;
 }
 
+# Marketplace rest server
+location ~ ^/marketplace/api(.*)$ {
+  proxy_pass {{MARKETPLACE_API_URI}}/api$1$is_args$args;
+}
+
+# Marketplace webportal plugin
+location ~ ^/marketplace/plugin.js$ {
+  proxy_pass {{MARKETPLACE_WEBPORTAL_PLUGIN}}/plugin.js;
+}
+
 # Kubernetes API server.
 location ~ ^/kubernetes/api(.*)$ {
   proxy_pass {{K8S_API_SERVER_URI}}/api$1$is_args$args;

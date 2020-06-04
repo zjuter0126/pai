@@ -21,6 +21,8 @@ port: 80
 # The following 2 config is for internal use
 webhdfs-legacy-port: 50070
 deploy-service: false
+marketplace_api_uri: http://10.151.40.234:3002
+marketplace_webportal_plugin: http://10.151.40.234:64321
 
 #ssl:
 #  # self-sign
