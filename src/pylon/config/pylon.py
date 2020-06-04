@@ -50,7 +50,7 @@ class Pylon:
             'uri': uri,
             'uri-https': uriHttps,
             'webhdfs-legacy-port': webhdfs_legacy_port,
-            'marketplace_api_uri': marketpalce_api_uri,
+            'marketplace_api_uri': marketplace_api_uri,
             'marketplace_webportal_plugin': marketplace_webportal_plugin,
         }
         if 'ssl' in self.service_configuration:
