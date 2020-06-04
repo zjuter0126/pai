@@ -61,8 +61,8 @@ location ~ ^/marketplace/api(.*)$ {
 }
 
 # marketplace webportal plugin
-location ~ ^/marketplace/plugin.js$ {
-  proxy_pass {{MARKETPLACE_WEBPORTAL_PLUGIN}}/plugin.js;
+location ~ ^/marketplace/(.*)$ {
+  proxy_pass {{MARKETPLACE_WEBPORTAL_PLUGIN}}/$1;
 }
 
 # Kubernetes API server.
