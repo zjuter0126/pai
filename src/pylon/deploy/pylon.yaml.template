@@ -47,6 +47,14 @@ spec:
           env:
             - name: REST_SERVER_URI
               value: {{ cluster_cfg['rest-server']['uri'] }}
+{% if 'marketplace_api_uri' in cluster_cfg['pylon'] %}
+            - name: MARKETPLACE_API_URI
+              value: {{ cluster_cfg['pylon']['marketplace_api_uri']}}
+{% endif %}
+{% if 'marketplace_webportal_plugin' in cluster_cfg['pylon'] %}
+            - name: MARKETPLACE_WEBPORTAL_PLUGIN
+              value: {{ cluster_cfg['pylon']['marketplace_webportal_plugin']}}
+{% endif %}
             - name: K8S_API_SERVER_URI
               value: {{ cluster_cfg['layout']['kubernetes']['api-servers-url'] }}
             - name: CLUSTER_TYPE
