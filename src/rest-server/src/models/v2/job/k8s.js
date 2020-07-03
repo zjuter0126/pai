@@ -414,6 +414,14 @@ const generateTaskRole = (frameworkName, taskRole, jobInfo, frameworkEnvList, co
           privileged: false,
           restartPolicy: 'Never',
           serviceAccountName: 'runtime-account',
+          tolerations: [
+              {
+                key: "virtual-kubelet.io/provider",
+                operator: "Equal",
+                value: "mock",
+                effect: "NoSchedule",
+              }
+          ],
           initContainers: [
             {
               name: 'init',
@@ -462,7 +470,6 @@ const generateTaskRole = (frameworkName, taskRole, jobInfo, frameworkEnvList, co
                 limits: {
                   'cpu': config.taskRoles[taskRole].resourcePerInstance.cpu,
                   'memory': `${config.taskRoles[taskRole].resourcePerInstance.memoryMB}Mi`,
-                  'github.com/fuse': 1,
                   'nvidia.com/gpu': config.taskRoles[taskRole].resourcePerInstance.gpu,
                   ...infinibandDevice && {'rdma/hca': 1},
                 },
